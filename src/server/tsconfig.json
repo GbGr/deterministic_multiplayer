@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": "../",
+        "sourceMap": true,
+        "target": "ES2018",
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "outDir": "../../server-build",
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    }
+}
