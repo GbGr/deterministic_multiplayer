@@ -12,8 +12,8 @@ import { UniversalCamera } from '@babylonjs/core/Cameras/universalCamera'
 import Ground from '../../common/components/Ground/Ground'
 import CharacterPrefab from '../../common/prefabs/CharacterPrefab'
 import BombPrefab from '../../common/prefabs/BombPrefab'
-import LocalPlayer from '../../common/components/Player/LocalPlayer'
-import AbstractPlayer from '../../common/components/Player/AbstractPlayer'
+import World from '../../common/World/World'
+import View from '../../common/World/View'
 
 const stats = document.getElementById('stats')
 
@@ -24,9 +24,10 @@ export default class GameRuntime {
     private readonly light: HemisphericLight
     private readonly characterPrefab: CharacterPrefab
     private readonly bombPrefab: BombPrefab
-    private readonly players: Array<AbstractPlayer> = []
-
     private readonly ground: Ground
+
+    private readonly world: World
+    private readonly view: View
 
     constructor(private readonly htmlCanvas: HTMLCanvasElement) {
         this.engine = new Engine(htmlCanvas, true, { powerPreference: 'high-performance' }, true)
@@ -40,9 +41,10 @@ export default class GameRuntime {
 
         this.ground = new Ground(this.scene)
         this.bombPrefab = new BombPrefab(this.scene)
-        this.characterPrefab = new CharacterPrefab(this.scene, this.bombPrefab)
+        this.characterPrefab = new CharacterPrefab(this.scene)
 
-        this.players.push(new LocalPlayer(this.characterPrefab.instantiate()))
+        this.world = new World()
+        this.view = new View(this.world.model, this.characterPrefab)
 
         this.scene.debugLayer.show()
 
@@ -53,9 +55,11 @@ export default class GameRuntime {
     private render = (): void => {
         stats.textContent = `FPS: ${Math.trunc(this.engine.getFps())}`
         const dt = this.engine.getDeltaTime()
-        for (const player of this.players) {
-            player.update(dt)
-        }
+        this.world.updateTick(dt)
+        this.view.update(dt)
+        // for (const player of this.players) {
+        //     player.update(dt)
+        // }
 
         this.scene.render()
     }
