@@ -30,6 +30,16 @@ export default class World {
         this.timeSinceStart = 0
         this.ticksSinceStart = 0
 
+        window.addEventListener('keyup', (e) => {
+            if (e.code === 'Escape') {
+                e.preventDefault()
+                e.stopPropagation()
+                this.model.setState(this.modelHistory.get(0).state)
+                this.ticksSinceStart = 0
+                this.timeSinceStart = 0
+            }
+        })
+
         InputActionService.moveActionEvent.on((moveAction) => this.input.update(moveAction))
     }
 

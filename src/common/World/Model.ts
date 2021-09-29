@@ -1,7 +1,7 @@
 import { Vector3 } from '@babylonjs/core/Maths/math.vector'
 
 export default class Model {
-    public readonly state: IModelState
+    public state: IModelState
 
     constructor(state?: IModelState) {
         this.state = state || {
@@ -12,9 +12,13 @@ export default class Model {
 
     public copy(): Model {
         return new Model({
-            characters: closeEntities(this.state.characters) as any,
-            bombs: closeEntities(this.state.bombs),
+            characters: cloneEntities(this.state.characters) as any,
+            bombs: cloneEntities(this.state.bombs),
         })
+    }
+
+    public setState(state: IModelState): void {
+        this.state = state
     }
 }
 
@@ -23,7 +27,7 @@ export interface IModelState {
     bombs: {[key: string]: { position: Vector3 }}
 }
 
-function closeEntities(map: { [key: string]: { position: Vector3 } }): { [key: string]: { position: Vector3 } } {
+function cloneEntities(map: { [key: string]: { position: Vector3 } }): { [key: string]: { position: Vector3 } } {
     return Object.keys(map).reduce((newMap, entityKey) => {
         newMap[entityKey] = cloneEntity(map[entityKey])
         return newMap
