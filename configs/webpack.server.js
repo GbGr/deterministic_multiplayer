@@ -1,20 +1,13 @@
 const path = require('path')
-const fs = require('fs')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const NodemonPlugin = require('nodemon-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
 const mode = process.env.NODE_ENV === 'production' ? process.env.NODE_ENV : 'development'
-
-const nodeModules = {};
-fs.readdirSync(path.resolve(__dirname, '../node_modules'))
-    .filter(function(x) {
-        return ['.bin'].indexOf(x) === -1;
-    })
-    .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs ' + mod;
-    });
 
 module.exports = {
     mode,
     entry: './src/server/index.ts',
+    devtool: 'eval-source-map',
     target: 'node',
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -28,8 +21,16 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.ts$/, use: [ 'ts-loader', ] }
+            {
+                test: /\.ts$/,
+                use: [ 'ts-loader', ],
+                exclude: '/node_modules/',
+            }
         ]
     },
-    externals: nodeModules,
+    plugins: [
+        new NodemonPlugin(),
+    ],
+    externalsPresets: { node: true },
+    externals: [nodeExternals({ allowlist: [ /@babylonjs\/core/ ] })],
 }

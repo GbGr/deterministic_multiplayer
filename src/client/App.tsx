@@ -1,12 +1,13 @@
-import './App.sass'
+import './App.css'
 import React, { FC } from 'react'
 import Game from './Game'
 
 const App: FC = () => {
     return (
-        <div className="root">
+        <section className='game'>
             <Game />
-        </div>
+            <section className='game__ui ui' />
+        </section>
     )
 }
 

@@ -2,10 +2,11 @@
     "compilerOptions": {
         "baseUrl": "../",
         "sourceMap": true,
+        "lib": [ "DOM", "ES2019.Object" ],
         "target": "ES2018",
         "module": "CommonJS",
         "esModuleInterop": true,
-        "moduleResolution": "node",
+        "moduleResolution": "Node",
         "outDir": "../../server-build",
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,

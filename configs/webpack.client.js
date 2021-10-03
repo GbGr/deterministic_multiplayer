@@ -1,6 +1,7 @@
 const path = require('path')
-const TerserPlugin = require("terser-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CircularDependencyPlugin = require('circular-dependency-plugin')
 const mode = process.env.NODE_ENV === 'production' ? process.env.NODE_ENV : 'development';
 const isProd = mode === 'production'
 
@@ -21,15 +22,8 @@ module.exports = {
                 exclude: '/node_modules/'
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
-                ],
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
@@ -45,7 +39,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html')
-        })
+        }),
+        new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            cwd: process.cwd()
+        }),
     ],
     optimization: isProd ? {
         minimize: true,

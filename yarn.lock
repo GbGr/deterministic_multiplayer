@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@abraham/reflection@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@abraham/reflection/-/reflection-0.8.0.tgz#f8103d1a4a0ed7b846668e35834c22c14044e0f1"
+  integrity sha512-Oy2jk9hHEI/t1avTgB4BCQtceUOqwrElQdecGS0wTqH5rc0KXysUrhpX4ep0vCMjoxzNyXSx7JU+KWkrkFIKOg==
+
 "@babylonjs/core@4.2.0", "@babylonjs/core@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-4.2.0.tgz#d1cfd43d7e3d2e58cde79083f04eeb607f6c8f18"
@@ -63,7 +68,7 @@
   dependencies:
     debug "^4.1.1"
 
-"@colyseus/core@^0.14.20":
+"@colyseus/core@^0.14.20", "@colyseus/core@^0.14.24":
   version "0.14.24"
   resolved "https://registry.yarnpkg.com/@colyseus/core/-/core-0.14.24.tgz#bbdac4e51ffcde4f91ff4dd6841b2d2f432cdcbb"
   integrity sha512-0eKRPnX3+bRagGC1DEyzqwSpgzJAqn53upxODQT9hILZXVTJdENSsrHoe5dBkDKapoNlSfhuvjuRSOONtUbsrA==
@@ -92,10 +97,19 @@
     "@colyseus/core" "^0.14.20"
     redis "^2.8.0"
 
-"@colyseus/schema@^1.0.15", "@colyseus/schema@^1.0.22":
+"@colyseus/schema@^1.0.15", "@colyseus/schema@^1.0.22", "@colyseus/schema@^1.0.28":
   version "1.0.28"
   resolved "https://registry.yarnpkg.com/@colyseus/schema/-/schema-1.0.28.tgz#8a76f2aa09a7d5423a05eca896a0daf5ef3a6ee4"
   integrity sha512-4mAvrPHU4iOJ7uVEowUf9lfoI0/xeYMSU7dcjQXSkfTTxvruH0VlBmASA/La3ENYT06k6qxehCdQr/HM83AC2g==
+
+"@colyseus/uwebsockets-transport@^0.14.26":
+  version "0.14.26"
+  resolved "https://registry.yarnpkg.com/@colyseus/uwebsockets-transport/-/uwebsockets-transport-0.14.26.tgz#7db77dda6f88e41e1470d4ea263abcdcce364a8f"
+  integrity sha512-zkm0cpcfAXj0t14Jsqz53tVvli+tPur8dTs1lMMLghowyccz0P6abJlgoEmY3YDjyKJDaFUTV3dn9ChbrjbX0A==
+  dependencies:
+    "@colyseus/core" "^0.14.20"
+    "@colyseus/schema" "^1.0.15"
+    uWebSockets.js "github:uNetworking/uWebSockets.js#v19.2.0"
 
 "@colyseus/ws-transport@^0.14.21":
   version "0.14.21"
@@ -342,6 +356,13 @@
   version "14.17.17"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.17.tgz#4ec7b71bbcb01a4e55455b60b18b1b6a783fe31d"
   integrity sha512-niAjcewgEYvSPCZm3OaM9y6YQrL2SEPH9PymtE6fuZAvFiP6ereCcvApGl2jKTq7copTIguX3PBvfP08LN4LvQ==
+
+"@types/nodemon@latest":
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/@types/nodemon/-/nodemon-1.19.1.tgz#00b2b931e240112dff30fc9cadbe3de02b5f3abc"
+  integrity sha512-3teAFqCFba3W9zk4dAGUZ+rW/nrQBrSGXWyK9HfJuWxmITk2z2d3u/5cy7oFqNG2fZxPwSAWkP+a8q/QC6UU5Q==
+  dependencies:
+    "@types/node" "*"
 
 "@types/prop-types@*":
   version "15.7.4"
@@ -954,7 +975,7 @@ chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@^3.2.2, chokidar@^3.5.1:
+chokidar@^3.2.2, chokidar@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.2.tgz#dba3976fcadb016f66fd365021d91600d01c1e75"
   integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
@@ -978,6 +999,11 @@ ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
+
+circular-dependency-plugin@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/circular-dependency-plugin/-/circular-dependency-plugin-5.2.2.tgz#39e836079db1d3cf2f988dc48c5188a44058b600"
+  integrity sha512-g38K9Cm5WRwlaH6g03B9OEz/0qRizI+2I7n+Gz+L5DxXJAPAiWQvwlYNm1V1jkdpUv95bOe/ASm2vfi/G560jQ==
 
 clean-css@^4.2.3:
   version "4.2.3"
@@ -2543,11 +2569,6 @@ kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-klona@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
-  integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
-
 koa-body@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/koa-body/-/koa-body-4.2.0.tgz#37229208b820761aca5822d14c5fc55cee31b26f"
@@ -2951,6 +2972,14 @@ node-releases@^1.1.75:
   version "1.1.75"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.75.tgz#6dd8c876b9897a1b8e5a02de26afa79bb54ebbfe"
   integrity sha512-Qe5OUajvqrqDSy6wrWFmMwfJ0jVgwiw4T3KqmbTcZ62qW0gQkheXYhcFM1+lOVcGUoRxcEcfyvFMAnDgaF1VWw==
+
+nodemon-webpack-plugin@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/nodemon-webpack-plugin/-/nodemon-webpack-plugin-4.5.2.tgz#76aeee7f9c73815f64de5e0ae8578122bc3d2639"
+  integrity sha512-+TNh++lIY6qcKOdEP07XhFFW0cN1a2YfyfP3idP7dOtJOUzwcMYZpNRk5iTMtQmMwzJF04obpltwE2KT5FISGw==
+  dependencies:
+    "@types/nodemon" latest
+    nodemon "2.0.7"
 
 nodemon@2.0.7:
   version "2.0.7"
@@ -3695,21 +3724,6 @@ saslprep@^1.0.0:
   dependencies:
     sparse-bitfield "^3.0.3"
 
-sass-loader@^12.1.0:
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-12.1.0.tgz#b73324622231009da6fba61ab76013256380d201"
-  integrity sha512-FVJZ9kxVRYNZTIe2xhw93n3xJNYZADr+q69/s98l9nTCrWASo+DR2Ot0s5xTKQDDEosUkatsGeHxcH4QBp5bSg==
-  dependencies:
-    klona "^2.0.4"
-    neo-async "^2.6.2"
-
-sass@^1.41.1:
-  version "1.41.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.41.1.tgz#bca5bed2154192779c29f48fca9c644c60c38d98"
-  integrity sha512-vIjX7izRxw3Wsiez7SX7D+j76v7tenfO18P59nonjr/nzCkZuoHuF7I/Fo0ZRZPKr88v29ivIdE9BqGDgQD/Nw==
-  dependencies:
-    chokidar ">=3.0.0 <4.0.0"
-
 scheduler@^0.20.2:
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.2.tgz#4baee39436e34aa93b4874bddcbf0fe8b8b50e91"
@@ -4238,7 +4252,7 @@ tsscmp@1.0.6:
   resolved "https://registry.yarnpkg.com/tsscmp/-/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
   integrity sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==
 
-tsyringe@^4.4.0:
+tsyringe@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/tsyringe/-/tsyringe-4.6.0.tgz#14915d3d7f0db35e1cf7269bdbf7c440713c8d07"
   integrity sha512-BMQAZamSfEmIQzH8WJeRu1yZGQbPSDuI9g+yEiKZFIcO46GPZuMOC2d0b52cVBdw1d++06JnDSIIZvEnogMdAw==
@@ -4269,6 +4283,10 @@ typescript@^4.1.5:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
   integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
+
+"uWebSockets.js@github:uNetworking/uWebSockets.js#v19.2.0":
+  version "19.2.0"
+  resolved "https://codeload.github.com/uNetworking/uWebSockets.js/tar.gz/77b1761c5a23ac6a5c2adf2bd808be0ae6b5000a"
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
@@ -4461,6 +4479,11 @@ webpack-merge@^5.7.3:
   dependencies:
     clone-deep "^4.0.1"
     wildcard "^2.0.0"
+
+webpack-node-externals@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-3.0.0.tgz#1a3407c158d547a9feb4229a9e3385b7b60c9917"
+  integrity sha512-LnL6Z3GGDPht/AigwRh2dvL9PQPFQ8skEpVrWZXLWBYmqcaojHNN0onvHzie6rq7EWKrrBfPYqNEzTJgiwEQDQ==
 
 webpack-sources@^3.2.0:
   version "3.2.1"
