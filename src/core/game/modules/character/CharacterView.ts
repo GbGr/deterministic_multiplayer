@@ -2,7 +2,7 @@ import { View } from '../../world/view/View'
 import { LogicModelCharacterState } from '../../world/Logic/LogicModel'
 import { Scene } from '@babylonjs/core/scene'
 import { Mesh } from '@babylonjs/core/Meshes/mesh'
-import { MeshBuilder } from '@babylonjs/core'
+import { MeshBuilder } from '@babylonjs/core/Meshes/meshBuilder'
 
 export class CharacterView implements View<LogicModelCharacterState>{
     private readonly mesh: Mesh

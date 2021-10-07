@@ -3,11 +3,12 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const NodemonPlugin = require('nodemon-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
 const mode = process.env.NODE_ENV === 'production' ? process.env.NODE_ENV : 'development'
+const isProd = mode === 'production'
 
 module.exports = {
     mode,
     entry: './src/server/index.ts',
-    devtool: 'eval-source-map',
+    devtool: isProd ? undefined : 'eval-source-map',
     target: 'node',
     output: {
         path: path.resolve(__dirname, '../dist'),

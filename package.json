@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "cross-env NODE_ENV=production run-p client:build server:build",
     "dev": "cross-env NODE_ENV=development run-p client:dev server:dev",
     "client:dev": "cross-env NODE_ENV=development webpack serve --config ./configs/webpack.client.js",
     "client:build": "cross-env NODE_ENV=production webpack --config ./configs/webpack.client.js",
     "server:webpack": "cross-env NODE_ENV=development webpack --watch --config ./configs/webpack.server.js",
     "server:dev": "run-p server:webpack",
-    "server:build": "cross-env NODE_ENV=production webpack --config ./configs/webpack.server.js",
-    "postinstall": "npm run server:build"
+    "server:build": "cross-env NODE_ENV=production webpack --config ./configs/webpack.server.js"
   },
   "author": "Pavel Leonov",
   "license": "MIT",
@@ -50,6 +50,7 @@
     "@colyseus/uwebsockets-transport": "^0.14.26",
     "@colyseus/ws-transport": "^0.14.21",
     "bufferutil": "^4.0.3",
+    "cannon-es": "^0.18.0",
     "colyseus": "^0.14.23",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",

@@ -1,7 +1,7 @@
 import { FactoryFunction, instancePerContainerCachingFactory } from 'tsyringe'
-import { Engine } from '@babylonjs/core/Engines/engine'
 import { Platform, PLATFORM_ID } from '../../di/Platform'
-import { NullEngine } from '@babylonjs/core'
+import { Engine } from '@babylonjs/core/Engines/engine'
+import { NullEngine } from '@babylonjs/core/Engines/nullEngine'
 import { CANVAS_ELEMENT } from '../../di/CanvasElement'
 
 const lockstepMaxSteps = 0

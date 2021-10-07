@@ -35,7 +35,7 @@ module.exports = {
         filename: '[contenthash].js',
         path: path.resolve(__dirname, '../dist/client')
     },
-    devtool: isProd ? 'inline-source-map' : undefined,
+    devtool: undefined,
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html')
