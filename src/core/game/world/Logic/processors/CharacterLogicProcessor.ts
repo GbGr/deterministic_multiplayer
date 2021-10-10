@@ -1,4 +1,4 @@
-import { LogicProcessor } from '../LogicProcessor'
+import { ILogicProcessor } from '../ILogicProcessor'
 import { Lifecycle, scoped } from 'tsyringe'
 import NetworkPackage from '../../Network/NetworkPackage'
 import LogicModel from '../LogicModel'
@@ -10,7 +10,7 @@ import { MOVE_BACKWARD, MOVE_FORWARD, MOVE_LEFT, MOVE_RIGHT } from '../../../mod
 const CHARACTER_SPEED = 0.005
 
 @scoped(Lifecycle.ContainerScoped)
-export default class CharacterLogicProcessor implements LogicProcessor {
+export default class CharacterLogicProcessor implements ILogicProcessor {
     constructor(private readonly _logicModel: LogicModel) {
     }
 

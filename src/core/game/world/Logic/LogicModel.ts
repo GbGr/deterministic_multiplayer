@@ -1,5 +1,5 @@
 import { Lifecycle, scoped } from 'tsyringe'
-import { IVector3Like } from '@babylonjs/core/Maths/math.like'
+import { IVector3Like, IVector4Like } from '@babylonjs/core/Maths/math.like'
 import { recursiveDeepCopy } from '../../../misc/copy'
 import { SyncStateNetworkPackage } from '../Network/NetworkPackage'
 
@@ -20,12 +20,13 @@ export default class LogicModel {
         this._state = {
             tick: 0,
             characters: new Map<number, LogicModelCharacterState>(),
+            physicsObjects: new Map<number, LogicModelPhysicsObjectState>(),
         }
         this._initialState = recursiveDeepCopy(this._state)
     }
 
     public setState(state: LogicModelState): void {
-        this._state = state
+        this._state = recursiveDeepCopy(state)
     }
 
     public copy(): LogicModelState {
@@ -39,10 +40,16 @@ export default class LogicModel {
         Object.keys(charactersObj).forEach((playerId) => {
             characters.set(Number(playerId), charactersObj[playerId])
         })
+        const physicsObjectsObj: { [key: string]: LogicModelPhysicsObjectState } = syncStateNetworkPackage.state.physicsObjects as any
+        const physicsObjects = new Map<number, LogicModelPhysicsObjectState>()
+        Object.keys(physicsObjectsObj).forEach((objectId) => {
+            physicsObjects.set(Number(objectId), physicsObjectsObj[objectId])
+        })
 
         this._state = {
             tick: syncStateNetworkPackage.tick,
             characters,
+            physicsObjects,
         }
     }
 }
@@ -50,6 +57,16 @@ export default class LogicModel {
 export interface LogicModelState {
     tick: number
     characters: Map<number, LogicModelCharacterState>
+    physicsObjects: Map<number, LogicModelPhysicsObjectState>
+}
+
+export interface LogicModelPhysicsObjectState {
+    objectId: number
+    force: IVector3Like
+    linearVelocity: IVector3Like
+    angularVelocity: IVector3Like
+    position: IVector3Like
+    quaternion: IVector4Like
 }
 
 export interface LogicModelCharacterState {

@@ -42,10 +42,11 @@ export default class GameRoom extends Room<GameRoomSchema> {
 
     public onJoin(client: Client, options: any, auth: any): void {
         this.broadcastPatch()
-        const { tick, characters } = this._gameRuntime.world.logicModelState
+        const { tick, characters, physicsObjects } = this._gameRuntime.world.logicModelState
         const serializedState = {
             tick,
             characters: Object.fromEntries(characters),
+            physicsObjects: Object.fromEntries(physicsObjects),
         }
         client.send(ServerCommands.SyncState, {
             ts: this.state.ts,

@@ -7,10 +7,13 @@ export default class LogicModelHistory {
     private readonly _historyMap: BoundedMap<number, LogicModelState>
 
     constructor(private readonly _logicModel: LogicModel) {
-        this._historyMap = new BoundedMap<number, LogicModelState>(1000)
+        this._historyMap = new BoundedMap<number, LogicModelState>(1000000)
     }
 
     public add(logicModelState: LogicModelState): void {
+        // +1 because of the state for tick has already processed
+        // const prev = this._historyMap.get(logicModelState.tick)
+        // if (prev && prev.characters.values().next().value && prev.characters.values().next().value.position.z !== logicModelState.characters.values().next().value.position.z) debugger
         this._historyMap.set(logicModelState.tick, logicModelState)
     }
 

@@ -1,5 +1,5 @@
-// import '@babylonjs/core/Debug/debugLayer'
-// import '@babylonjs/inspector'
+import '@babylonjs/core/Debug/debugLayer'
+import '@babylonjs/inspector'
 
 import { Lifecycle, scoped } from 'tsyringe'
 import { Scene } from '@babylonjs/core/scene'

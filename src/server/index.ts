@@ -13,6 +13,8 @@ const gameServer = new Server({
     transport,
 })
 
+gameServer.simulateLatency(200)
+
 gameServer.define('GameRoom', GameRoom)
 
 gameServer.listen(PORT).then(() => {

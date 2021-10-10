@@ -13,15 +13,14 @@ export default class RPCQueue extends BoundedMap<number, Array<NetworkPackage>> 
     }
 
     public get(k: number): Array<NetworkPackage> {
-        return super.get(k) || new Array<NetworkPackage>()
+        return super.get(k) || []
     }
 
     public enqueueNetworkPackage(v: NetworkPackage): void {
-        if (this._lowerTick < v.tick) this._lowerTick = v.tick
+        if (this._lowerTick === -1 || this._lowerTick > v.tick) this._lowerTick = v.tick
 
         const tickPackages = this.get(v.tick)
         tickPackages.push(v)
-
         tickPackages.sort(orderTickNetworkPackages)
 
         this.set(v.tick, tickPackages)

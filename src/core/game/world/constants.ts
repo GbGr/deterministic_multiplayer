@@ -1,0 +1,3 @@
+export const LOGIC_TICK_RATE = 120
+export const LOGIC_DT = 1000 / LOGIC_TICK_RATE
+export const CLIENT_SYNC_RATE = LOGIC_TICK_RATE

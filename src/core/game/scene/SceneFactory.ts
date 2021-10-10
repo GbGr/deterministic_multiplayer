@@ -10,6 +10,7 @@ const SceneFactory: FactoryFunction<Scene> = instancePerContainerCachingFactory(
     const scene = new Scene(dependencyContainer.resolve(Engine))
     const physicsPlugin = dependencyContainer.resolve(PHYSICS_PLUGIN)
     scene.enablePhysics(new Vector3(0, -9.8, 0), physicsPlugin)
+    scene.physicsEnabled = false
 
     return scene
 })
